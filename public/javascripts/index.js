@@ -19,7 +19,7 @@ $(document).ready(function() {
       {
         fill: false,
         label: 'Water Temperature',
-        yAxisID: 'Water Temperature',
+        yAxisID: 'Temperature',
         borderColor: "rgba(255,20,0,1)",
         pointBoarderColor: "rgba(255,20,0,1)",
         backgroundColor: "rgba(255,20,0,0.4)",
@@ -56,13 +56,28 @@ $(document).ready(function() {
   // }
 
   var basicOption = {
+    scaleOverride : true,
+    scaleSteps : 10,
+    scaleStepWidth : 10,
+    scaleStartValue : 0,
     title: {
       display: true,
       text: 'Temperature & Humidity Real-time Data',
       fontSize: 36
     },
     scales: {
-      yAxes: [{
+      yAxes: [
+        // {
+        //   id: 'Temperature',
+        //   type: 'linear',
+        //   scaleLabel: {
+        //     labelString: 'Temperature(C)',
+        //     display: true
+        //   },
+        //   position: 'left',
+        // },
+        {
+          //id: 'Water Temperature',
           id: 'Temperature',
           type: 'linear',
           scaleLabel: {
@@ -70,15 +85,9 @@ $(document).ready(function() {
             display: true
           },
           position: 'left',
-        },
-        {
-          id: 'Water Temperature',
-          type: 'linear',
-          scaleLabel: {
-            labelString: 'Water Temperature(C)',
-            display: true
-          },
-          position: 'left',
+          ticks: {
+                    beginAtZero:true
+                }
         }, {
           id: 'Humidity',
           type: 'linear',
@@ -86,7 +95,10 @@ $(document).ready(function() {
             labelString: 'Humidity(%)',
             display: true
           },
-          position: 'right'
+          position: 'right',
+          ticks: {
+                    beginAtZero:true
+                }
         }
       ]
     }
